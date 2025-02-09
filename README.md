@@ -31,15 +31,11 @@ Before you begin, ensure you have the following installed on your machine:
 
 Follow these steps to set up the package:
 
-1. **Install the package using Composer:**
-
-   ```bash
-   composer install
-   ```
+1. **Install the package using Composer on your system:**
+      composer and node 
 
 2. **Configuration::**
-
-   Update your configuration file (e.g., .env) with your API base URL
+      Update your configuration file (e.g., .env) with your API base URL
 
 3. **Set Up a Web Server or Use docker:**
 
