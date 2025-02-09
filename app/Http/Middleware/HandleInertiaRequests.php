@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Inertia\Middleware;
 
@@ -12,7 +13,7 @@ class HandleInertiaRequests extends Middleware
      *
      * @var string
      */
-    protected $rootView = 'app';
+    protected $rootView = 'inertia';
 
     /**
      * Determine the current asset version.
@@ -33,6 +34,8 @@ class HandleInertiaRequests extends Middleware
             ...parent::share($request),
             'auth' => [
                 'user' => $request->user(),
+                'is_supplier' => User::isSupplier(),
+                'is_user' => User::isUser(),
             ],
         ];
     }
