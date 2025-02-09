@@ -41,14 +41,26 @@ Follow these steps to set up the package:
 
    Update your configuration file (e.g., .env) with your API base URL
 
-3. **Set Up a Web Server Using PHP’s Built-In Server or use docker composer:**
+3. **Set Up a Web Server or Use docker:**
 
-   You can use Apache, Nginx, or PHP’s built-in server to run the project
+   Using Docker
+    - install docker desktop for windows or linux
+    - run composer require laravel/sail --dev
+    - php artisan sail:install
+    - ./vendor/bin/sail up
 
-   Navigate to the `public` directory and start the PHP server:
+   Using Web Server (Apache, Nginx)
+    - Navigate to the `public` directory and start the PHP server:
 
       ```bash
       cd public
       php -S localhost:8000
       ```
    Now, open your web browser and visit `http://localhost:8000`.
+
+4. **Usage:**
+
+   - register and create an account as a supplier or a shopper
+   - as a supplier create products and view customers who purchased your products
+   - as a shopper view available products and purchase any product 
+   - as a shopper view your purchase orders
