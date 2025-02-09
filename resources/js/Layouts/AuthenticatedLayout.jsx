@@ -7,7 +7,8 @@ import { useState } from 'react';
 
 export default function AuthenticatedLayout({ header, children }) {
     const user = usePage().props.auth.user;
-
+    const is_supplier = usePage().props.auth.is_supplier;
+    const is_user = usePage().props.auth.is_user;
     const [showingNavigationDropdown, setShowingNavigationDropdown] =
         useState(false);
 
@@ -24,14 +25,58 @@ export default function AuthenticatedLayout({ header, children }) {
                             </div>
 
                             <div className="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                                {is_supplier && (
+                                <NavLink
+                                    href={route('dashboard-supplier')}
+                                    active={route().current('dashboard-supplier')}
+                                >
+                                    Product
+                                </NavLink>
+                                )}
+
+                                {is_user && (
                                 <NavLink
                                     href={route('dashboard')}
                                     active={route().current('dashboard')}
                                 >
-                                    Dashboard
+                                    Products Available
                                 </NavLink>
+                                )}
+                            </div>
+
+                            <div className="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                                {is_supplier && (
+                                    <NavLink
+                                        href={route('order.supplier.index')}
+                                        active={route().current('order.supplier.index')}
+                                    >
+                                        Purchase Order History
+                                    </NavLink>
+                                )}
+
+                                {is_user && (
+                                    <NavLink
+                                        href={route('cart.index')}
+                                        active={route().current('cart.index')}
+                                    >
+                                        Cart
+                                    </NavLink>
+                                )}
+                            </div>
+
+
+                            <div className="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                                {is_user && (
+                                    <NavLink
+                                        href={route('order.index')}
+                                        active={route().current('order.index')}
+                                    >
+                                        Order History
+                                    </NavLink>
+                                )}
                             </div>
                         </div>
+
 
                         <div className="hidden sm:ms-6 sm:flex sm:items-center">
                             <div className="relative ms-3">
@@ -128,13 +173,57 @@ export default function AuthenticatedLayout({ header, children }) {
                     }
                 >
                     <div className="space-y-1 pb-3 pt-2">
+                        {is_supplier && (
                         <ResponsiveNavLink
+                            href={route('dashboard-supplier')}
+                            active={route().current('dashboard-supplier')}
+                        >
+                            Product
+                        </ResponsiveNavLink>
+                        )}
+
+                        {is_user && (
+                            <ResponsiveNavLink
                             href={route('dashboard')}
                             active={route().current('dashboard')}
                         >
-                            Dashboard
+                             Products Available
                         </ResponsiveNavLink>
+                        )}
                     </div>
+
+                    <div className="space-y-1 pb-3 pt-2">
+                        {is_supplier && (
+                            <ResponsiveNavLink
+                                href={route('order.supplier.index')}
+                                active={route().current('order.supplier.index')}
+                            >
+                                Purchase Order History
+                            </ResponsiveNavLink>
+                        )}
+
+                        {is_user && (
+                            <ResponsiveNavLink
+                                href={route('cart.index')}
+                                active={route().current('cart.index')}
+                            >
+                                Cart
+                            </ResponsiveNavLink>
+                        )}
+                    </div>
+
+
+                    <div className="space-y-1 pb-3 pt-2">
+                        {is_user && (
+                            <ResponsiveNavLink
+                                href={route('order.index')}
+                                active={route().current('order.index')}
+                            >
+                                Order History
+                            </ResponsiveNavLink>
+                        )}
+                    </div>
+
 
                     <div className="border-t border-gray-200 pb-1 pt-4">
                         <div className="px-4">
